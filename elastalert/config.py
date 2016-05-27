@@ -149,6 +149,15 @@ def load_options(rule, conf, args=None):
     rule.setdefault('timestamp_format', '%Y-%m-%dT%H:%M:%SZ')
     rule.setdefault('_source_enabled', True)
     rule.setdefault('use_local_time', True)
+    rule.setdefault('es_port', conf.get('es_port'))
+    rule.setdefault('es_host', conf.get('es_host'))
+    rule.setdefault('es_username', conf.get('es_username'))
+    rule.setdefault('es_password', conf.get('es_password'))
+    rule.setdefault('ca_certs', conf.get('ca_certs'))
+    rule.setdefault('client_cert', conf.get('client_cert'))
+    rule.setdefault('client_key', conf.get('client_key'))
+    rule.setdefault('max_query_size', conf.get('max_query_size'))
+    rule.setdefault('es_conn_timeout', conf.get('es_conn_timeout'))
     rule.setdefault('description', "")
 
     # Set timestamp_type conversion function, used when generating queries and processing hits

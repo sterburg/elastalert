@@ -28,6 +28,11 @@ es_port: 9200
 # Verify TLS certificates
 #verify_certs: True
 
+# Optional client side SSL authentication
+#ca_certs: /path/to/cacert.pem
+#client_cert: /path/to/client_cert.pem
+#client_key: /path/to/client_key.pem
+
 # GET request with body is the default option for Elasticsearch.
 # If it fails for some reason, you can pass 'GET', 'POST' or 'source'.
 # See http://elasticsearch-py.readthedocs.io/en/master/connection.html?highlight=send_get_body_as#transport
