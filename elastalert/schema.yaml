@@ -129,6 +129,9 @@ properties:
   verify_certs: {type: boolean}
   es_username: {type: string}
   es_password: {type: string}
+  ca_certs: {type: string}
+  client_cert: {type: string}
+  client_key: {type: string}
   use_strftime_index: {type: boolean}
 
   # Optional Settings

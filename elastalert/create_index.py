@@ -51,11 +51,17 @@ def main():
         url_prefix = args.url_prefix if args.url_prefix is not None else data.get('es_url_prefix', '')
         use_ssl = args.ssl if args.ssl is not None else data.get('use_ssl')
         verify_certs = args.verify_certs if args.verify_certs is not None else data.get('verify_certs') is not False
+        ca_certs = data.get('ca_certs')
+        client_cert = data.get('client_cert')
+        client_key = data.get('client_key')
         aws_region = data.get('aws_region', None)
         send_get_body_as = data.get('send_get_body_as', 'GET')
     else:
         username = None
         password = None
+        ca_certs = None
+        client_cert = None
+        client_key = None
         aws_region = args.aws_region
         host = args.host if args.host else raw_input('Enter Elasticsearch host: ')
         port = args.port if args.port else int(raw_input('Enter Elasticsearch port: '))
@@ -87,6 +93,9 @@ def main():
         timeout=timeout,
         use_ssl=use_ssl,
         verify_certs=verify_certs,
+        ca_certs=ca_certs,
+        client_cert=client_cert,
+        client_key=client_key,
         connection_class=RequestsHttpConnection,
         http_auth=http_auth,
         url_prefix=url_prefix,

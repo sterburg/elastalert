@@ -266,27 +266,6 @@ def replace_dots_in_field_names(document):
     return document
 
 
-def elasticsearch_client(conf):
-    """ returns an Elasticsearch instance configured using an es_conn_config """
-    es_conn_conf = build_es_conn_config(conf)
-    auth = Auth()
-    es_conn_conf['http_auth'] = auth(host=es_conn_conf['es_host'],
-                                     username=es_conn_conf['es_username'],
-                                     password=es_conn_conf['es_password'],
-                                     aws_region=es_conn_conf['aws_region'],
-                                     boto_profile=es_conn_conf['boto_profile'])
-
-    return Elasticsearch(host=es_conn_conf['es_host'],
-                         port=es_conn_conf['es_port'],
-                         url_prefix=es_conn_conf['es_url_prefix'],
-                         use_ssl=es_conn_conf['use_ssl'],
-                         verify_certs=es_conn_conf['verify_certs'],
-                         connection_class=RequestsHttpConnection,
-                         http_auth=es_conn_conf['http_auth'],
-                         timeout=es_conn_conf['es_conn_timeout'],
-                         send_get_body_as=es_conn_conf['send_get_body_as'])
-
-
 def build_es_conn_config(conf):
     """ Given a conf dictionary w/ raw config properties 'use_ssl', 'es_host', 'es_port'
     'es_username' and 'es_password', this will return a new dictionary
@@ -318,6 +297,15 @@ def build_es_conn_config(conf):
 
     if 'use_ssl' in conf:
         parsed_conf['use_ssl'] = conf['use_ssl']
+
+    if 'ca_certs' in conf:
+        parsed_conf['ca_certs'] = conf['ca_certs']
+
+    if 'client_cert' in conf:
+        parsed_conf['client_cert'] = conf['client_cert']
+
+    if 'client_key' in conf:
+        parsed_conf['client_key'] = conf['client_key']
 
     if 'verify_certs' in conf:
         parsed_conf['verify_certs'] = conf['verify_certs']
