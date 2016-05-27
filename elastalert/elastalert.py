@@ -137,6 +137,9 @@ class ElastAlerter():
                              port=es_conn_conf['es_port'],
                              url_prefix=es_conn_conf['es_url_prefix'],
                              use_ssl=es_conn_conf['use_ssl'],
+                             ca_certs=['ca_certs'],
+                             client_cert=['client_cert']',
+                             client_key=es_conn_conf['client_key'],
                              connection_class=RequestsHttpConnection,
                              http_auth=es_conn_conf['http_auth'],
                              timeout=es_conn_conf['es_conn_timeout'],
@@ -173,6 +176,15 @@ class ElastAlerter():
 
         if 'use_ssl' in conf:
             parsed_conf['use_ssl'] = conf['use_ssl']
+
+        if 'ca_certs' in conf:
+            parsed_conf['ca_certs'] = conf['ca_certs']
+
+        if 'use_ssl' in conf:
+            parsed_conf['client_cert'] = conf['client_cert']
+
+        if 'use_ssl' in conf:
+            parsed_conf['client_key'] = conf['client_key']
 
         if 'es_conn_timeout' in conf:
             parsed_conf['es_conn_timeout'] = conf['es_conn_timeout']
