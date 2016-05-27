@@ -137,6 +137,7 @@ class ElastAlerter():
                              port=es_conn_conf['es_port'],
                              url_prefix=es_conn_conf['es_url_prefix'],
                              use_ssl=es_conn_conf['use_ssl'],
+                             verify_certs=es_conn_conf['verify_certs'],
                              ca_certs=['ca_certs'],
                              client_cert=['client_cert']',
                              client_key=es_conn_conf['client_key'],
@@ -153,6 +154,7 @@ class ElastAlerter():
         will be a basicauth username:password formatted string """
         parsed_conf = {}
         parsed_conf['use_ssl'] = False
+        parsed_conf['verify_certs'] = False
         parsed_conf['http_auth'] = None
         parsed_conf['es_username'] = None
         parsed_conf['es_password'] = None
@@ -177,13 +179,16 @@ class ElastAlerter():
         if 'use_ssl' in conf:
             parsed_conf['use_ssl'] = conf['use_ssl']
 
+        if 'verify_certs' in conf:
+            parsed_conf['verify_certs'] = conf['verify_certs']
+
         if 'ca_certs' in conf:
             parsed_conf['ca_certs'] = conf['ca_certs']
 
-        if 'use_ssl' in conf:
+        if 'client_cert' in conf:
             parsed_conf['client_cert'] = conf['client_cert']
 
-        if 'use_ssl' in conf:
+        if 'client_key' in conf:
             parsed_conf['client_key'] = conf['client_key']
 
         if 'es_conn_timeout' in conf:

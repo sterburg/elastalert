@@ -25,6 +25,9 @@ es_port: 14900
 # Connect with SSL to elasticsearch
 #use_ssl: True
 
+# Verify Server Certificate with local known CA's 
+#verify_certs: False
+
 # Optional client side SSL authentication
 #ca_certs: /path/to/cacert.pem
 #client_cert: /path/to/client_cert.pem

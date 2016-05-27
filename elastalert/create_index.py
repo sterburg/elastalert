@@ -46,6 +46,7 @@ def main():
         password = data.get('es_password')
         url_prefix = args.url_prefix if args.url_prefix is not None else data.get('es_url_prefix', '')
         use_ssl = args.ssl if args.ssl is not None else data.get('use_ssl')
+        verify_certs = data.get('verify_certs')
         ca_certs = data.get('ca_certs')
         client_cert = data.get('client_cert')
         client_key = data.get('client_key')
@@ -60,6 +61,7 @@ def main():
         aws_region = args.aws_region
         host = args.host if args.host else raw_input('Enter elasticsearch host: ')
         port = args.port if args.port else int(raw_input('Enter elasticsearch port: '))
+        verify_certs = False
         use_ssl = (args.ssl if args.ssl is not None
                    else raw_input('Use SSL? t/f: ').lower() in ('t', 'true'))
         if args.no_auth is None:
@@ -80,6 +82,7 @@ def main():
         host=host,
         port=port,
         use_ssl=use_ssl,
+        verify_certs=verify_certs,
         ca_certs=ca_certs,
         client_cert=client_cert,
         client_key=client_key,
