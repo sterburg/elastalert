@@ -139,7 +139,7 @@ class ElastAlerter():
                              use_ssl=es_conn_conf['use_ssl'],
                              verify_certs=es_conn_conf['verify_certs'],
                              ca_certs=['ca_certs'],
-                             client_cert=['client_cert']',
+                             client_cert=['client_cert'],
                              client_key=es_conn_conf['client_key'],
                              connection_class=RequestsHttpConnection,
                              http_auth=es_conn_conf['http_auth'],
