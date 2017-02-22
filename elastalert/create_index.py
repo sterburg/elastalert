@@ -63,8 +63,9 @@ def main():
         client_cert = None
         client_key = None
         aws_region = args.aws_region
-        host = args.host if args.host else raw_input('Enter Elasticsearch host: ')
-        port = args.port if args.port else int(raw_input('Enter Elasticsearch port: '))
+        host = args.host if args.host else raw_input('Enter elasticsearch host: ')
+        port = args.port if args.port else int(raw_input('Enter elasticsearch port: '))
+        verify_certs = False
         use_ssl = (args.ssl if args.ssl is not None
                    else raw_input('Use SSL? t/f: ').lower() in ('t', 'true'))
         if use_ssl:
